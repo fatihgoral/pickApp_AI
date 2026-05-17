@@ -1,0 +1,130 @@
+{
+  "kaynak_url": "https://www.kebapcitamer.com/menu/",
+  "restoran_adi": "Kebapçı Tamer Menü ve Fiyat Listesi | En İyi Bursa Kebabı",
+  "platform": "item-name-price",
+  "kategoriler": [
+    {
+      "kategori": "Bursa Döner Kebabı / Doner Kebab",
+      "urunler": [
+        {
+          "ad": "1 Porsiyon 120gr",
+          "fiyat": 900,
+          "para_birimi": "TRY",
+          "fiyat_metin": "900₺"
+        },
+        {
+          "ad": "1,5 Porsiyon 180gr",
+          "fiyat": 1215,
+          "para_birimi": "TRY",
+          "fiyat_metin": "1215₺"
+        },
+        {
+          "ad": "Çocuk Porsiyon 80gr",
+          "fiyat": 465,
+          "para_birimi": "TRY",
+          "fiyat_metin": "465₺"
+        }
+      ],
+      "aciklama": "Tavlanmış tırnak pide üzerinde, özel domates sosu, özenle kesilmiş döner eti. Yanında közlenmiş biber, domates ve yoğurt. Üzerine kızgın tereyağı ile servis edilir."
+    },
+    {
+      "kategori": "Eti Bol Döner Kebap / Doner Kebab with Extra Meat",
+      "urunler": [
+        {
+          "ad": "1 Porsiyon 195gr",
+          "fiyat": 1250,
+          "para_birimi": "TRY",
+          "fiyat_metin": "1250₺"
+        },
+        {
+          "ad": "1,5 Porsiyon 245gr",
+          "fiyat": 1625,
+          "para_birimi": "TRY",
+          "fiyat_metin": "1625₺"
+        },
+        {
+          "ad": "Çocuk Porsiyon 120gr",
+          "fiyat": 900,
+          "para_birimi": "TRY",
+          "fiyat_metin": "900₺"
+        }
+      ],
+      "aciklama": "Daha yoğun et lezzeti arayanlar için bol porsiyon seçeneği."
+    },
+    {
+      "kategori": "Bonfile Kebap / Doner Kebab with Steak",
+      "urunler": [
+        {
+          "ad": "1 Porsiyon 210gr",
+          "fiyat": 1625,
+          "para_birimi": "TRY",
+          "fiyat_metin": "1625₺"
+        },
+        {
+          "ad": "Çocuk Porsiyon 120gr",
+          "fiyat": 915,
+          "para_birimi": "TRY",
+          "fiyat_metin": "915₺"
+        }
+      ],
+      "aciklama": "Özel bonfile etiyle hazırlanan eşsiz lezzet."
+    },
+    {
+      "kategori": "Kebapçı Tamer Farkıyla",
+      "urunler": [
+        {
+          "ad": "Vejetaryen Kebap / For Vegetarians 330gr",
+          "fiyat": 680,
+          "para_birimi": "TRY",
+          "fiyat_metin": "680₺",
+          "aciklama": "Mantar, pide, yoğurt, sos, közlenmiş patlıcan, özel tereyağı."
+        },
+        {
+          "ad": "Glutensiz Döner Kebap 120gr",
+          "fiyat": 940,
+          "para_birimi": "TRY",
+          "fiyat_metin": "940₺",
+          "aciklama": "%100 karabuğday ekmeği ile hazırlanır."
+        },
+        {
+          "ad": "Diyet Döner Kebap 120gr",
+          "fiyat": 935,
+          "para_birimi": "TRY",
+          "fiyat_metin": "935₺",
+          "aciklama": "Pide yerine közlenmiş patlıcan yatağında servis edilir."
+        }
+      ]
+    },
+    {
+      "kategori": "Yan Lezzetler / Side Dishes",
+      "urunler": [
+        {
+          "ad": "Meşhur Ada Tatlısı",
+          "fiyat": 215,
+          "para_birimi": "TRY",
+          "fiyat_metin": "215₺",
+          "aciklama": "Çikolatalı ve muhallebili özel aile tarifi."
+        },
+        {
+          "ad": "Zengin Mevsim Salatası",
+          "fiyat": 415,
+          "para_birimi": "TRY",
+          "fiyat_metin": "415₺"
+        },
+        {
+          "ad": "Manda Yoğurdu",
+          "fiyat": 160,
+          "para_birimi": "TRY",
+          "fiyat_metin": "160₺"
+        },
+        {
+          "ad": "Patates Kızartması",
+          "fiyat": 210,
+          "para_birimi": "TRY",
+          "fiyat_metin": "210₺"
+        }
+      ]
+    }
+  ],
+  "toplam_urun": 15
+}
