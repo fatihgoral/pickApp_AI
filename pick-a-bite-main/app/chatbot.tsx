@@ -7,20 +7,22 @@ import {
   FlatList,
   KeyboardAvoidingView,
   Platform,
-  SafeAreaView,
+  StatusBar,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
   View,
 } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 // ─── TİP TANIMLARI ───────────────────────────
 type Role = "user" | "assistant";
 interface Message { id: string; role: Role; text: string; timestamp: Date; }
 
 // ─── YAPILANDIRMA ─────────────────────────────
-const GEMINI_API_KEY = "";
+// API Key .env.local dosyasından gelir — GitHub'a YÜKLENMEz
+const GEMINI_API_KEY = process.env.EXPO_PUBLIC_GEMINI_API_KEY ?? "";
 
 const BACKEND_URL = "http://10.67.16.188:8080/pick-a-bite";
 
@@ -171,6 +173,7 @@ KURALLAR:
 // ─── ANA BİLEŞEN ─────────────────────────────
 export default function ChatbotScreen() {
   const router = useRouter();
+  const insets = useSafeAreaInsets();
   const { qrData, restaurantId } = useLocalSearchParams<{ qrData?: string; restaurantId?: string }>();
   const flatListRef = useRef<FlatList>(null);
   const inputRef = useRef<TextInput>(null);
@@ -277,8 +280,11 @@ export default function ChatbotScreen() {
     );
   };
 
+  // Android'de status bar yüksekliği
+  const topPad = Platform.OS === "android" ? (StatusBar.currentHeight ?? 0) : insets.top;
+
   return (
-    <SafeAreaView style={styles.safe}>
+    <View style={[styles.safe, { paddingTop: topPad }]}>
       {/* HEADER */}
       <View style={styles.header}>
         <TouchableOpacity style={styles.backBtn} onPress={() => router.back()}>
@@ -299,7 +305,12 @@ export default function ChatbotScreen() {
         <View style={{ width: 40 }} />
       </View>
 
-      <KeyboardAvoidingView style={styles.flex} behavior={Platform.OS === "ios" ? "padding" : "height"}>
+      {/* MESAJ + INPUT */}
+      <KeyboardAvoidingView
+        style={styles.flex}
+        behavior="padding"
+        keyboardVerticalOffset={topPad + 56}
+      >
         <FlatList
           ref={flatListRef}
           data={messages}
@@ -334,7 +345,7 @@ export default function ChatbotScreen() {
           </>}
         />
 
-        {/* INPUT */}
+        {/* INPUT — her zaman en altta, navigasyon çubuğunun üstünde */}
         <View style={styles.inputWrap}>
           <TextInput
             ref={inputRef}
@@ -357,14 +368,14 @@ export default function ChatbotScreen() {
           </TouchableOpacity>
         </View>
       </KeyboardAvoidingView>
-    </SafeAreaView>
+    </View>
   );
 }
 
 // ─── STİLLER ─────────────────────────────────
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: "#f5f7fa" },
-  flex: { flex: 1 },
+  flex: { flex: 1, overflow: "hidden" },
 
   header: { backgroundColor: "white", flexDirection: "row", alignItems: "center", justifyContent: "space-between", paddingHorizontal: 16, paddingVertical: 12, borderBottomWidth: 1, borderBottomColor: "#efefef", elevation: 3, shadowColor: "#000", shadowOpacity: 0.06, shadowRadius: 4 },
   backBtn: { width: 40, height: 40, borderRadius: 20, backgroundColor: "#f5f5f5", justifyContent: "center", alignItems: "center" },
@@ -397,8 +408,28 @@ const styles = StyleSheet.create({
   quickBtn: { backgroundColor: "white", borderWidth: 1.5, borderColor: "#319795", borderRadius: 20, paddingHorizontal: 14, paddingVertical: 8 },
   quickText: { fontSize: 12, color: "#319795", fontWeight: "600" },
 
-  inputWrap: { flexDirection: "row", alignItems: "flex-end", backgroundColor: "white", paddingHorizontal: 12, paddingVertical: 10, borderTopWidth: 1, borderTopColor: "#efefef", gap: 10 },
-  input: { flex: 1, backgroundColor: "#f5f7fa", borderRadius: 22, paddingHorizontal: 16, paddingVertical: 10, fontSize: 14, maxHeight: 120, minHeight: 44, color: "#1a1a1a" },
+  inputWrap: {
+    flexDirection: "row",
+    alignItems: "flex-end",
+    backgroundColor: "white",
+    paddingHorizontal: 12,
+    paddingTop: 10,
+    paddingBottom: 14,
+    borderTopWidth: 1,
+    borderTopColor: "#efefef",
+    gap: 10,
+  },
+  input: {
+    flex: 1,
+    backgroundColor: "#f5f7fa",
+    borderRadius: 22,
+    paddingHorizontal: 16,
+    paddingVertical: 10,
+    fontSize: 14,
+    maxHeight: 120,
+    minHeight: 44,
+    color: "#1a1a1a",
+  },
   sendBtn: { width: 44, height: 44, borderRadius: 22, backgroundColor: "#319795", justifyContent: "center", alignItems: "center" },
   sendDisabled: { backgroundColor: "#c0d8d8" },
 });
